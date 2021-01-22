@@ -18,7 +18,7 @@ services:
     entrypoint: /usr/local/share/docker-init.sh
     command: sleep infinity
   db:
-    container_name: MyProjectDB
+    container_name: DBMyProject
     image: alpine
     volumes:
       - shareddata:/tmp/db/backup
