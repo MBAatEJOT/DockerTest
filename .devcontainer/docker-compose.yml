@@ -16,6 +16,9 @@ services:
       - /var/run/docker.sock:/var/run/docker-host.sock
       - ..:/workspaces:cached
       - shareddata:/tmp/db/backup
+    environment:
+      - FULL_NAME
+      - USER_MAIL
     network_mode: host
     entrypoint: /usr/local/share/docker-init.sh
     command: sleep infinity
