@@ -1,5 +1,4 @@
 version: '3.4'
-
 services:
   app:
     container_name: MyProject
@@ -7,22 +6,39 @@ services:
       context: .
       dockerfile: Dockerfile
       args:
-        # On Linux, you may need to update USER_UID and USER_GID below if not your local UID is not 1000.
-        USER_UID: 1000
+        USER_ID: 1000
         USER_GID: 1000
+    secrets:
+      - FullName
+      - UserMail
+      - AzureToken
     volumes:
       - /var/run/docker.sock:/var/run/docker-host.sock
-      - ..:/workspace:cached
+      - ..:/workspaces:cached
       - shareddata:/tmp/db/backup
     network_mode: host
     entrypoint: /usr/local/share/docker-init.sh
     command: sleep infinity
   db:
     container_name: DBMyProject
-    image: alpine
+    ports:
+    - 1433:1433
+    image: mcr.microsoft.com/mssql/server:2019-CU3-ubuntu-18.04
+    environment:
+      - MSSQL_COLLATION=Latin1_General_CI_AS
+      - MSSQL_SA_PASSWORD=APr3ttyStr0ngP@ssword
+      - ACCEPT_EULA=Y
     volumes:
       - shareddata:/tmp/db/backup
     network_mode: host
 
+secrets:
+  FullName:
+    external: true
+  UserMail:
+    external: true
+  AzureToken:
+    external: true
+
 volumes:
-  shareddata:
+  shareddata: 
