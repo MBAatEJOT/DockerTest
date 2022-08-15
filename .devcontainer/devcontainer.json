@@ -1,25 +1,26 @@
 {
-  "dockerComposeFile": "docker-compose.yml",
-  "service": "app",
-  "runServices": ["db"],
-  "workspaceFolder": "/workspace",
-  "remoteEnv": {
-    "LOCAL_WORKSPACE_FOLDER": "${localWorkspaceFolder}"
-  },
-  "extensions": [
-    "ms-azuretools.vscode-docker",
-    "eamodio.gitlens",
-    "quicktype.quicktype",
-    "mtxr.sqltools",
-    "dotjoshjohnson.xml",
-    "mtxr.sqltools-driver-mssql",
-    "hookyqr.beautify",
-    "dbaeumer.vscode-eslint",
-    "ms-dotnettools.csharp",
-    "k--kato.docomment"
-  ],
-  "forwardPorts": [
-    5000,
-    5001
-  ]
+	"dockerComposeFile": "docker-compose.yml",
+	"service": "app",
+	"workspaceFolder": "/workspaces",
+	"remoteEnv": {
+		"LOCAL_WORKSPACE_FOLDER": "${localWorkspaceFolder}"
+	},
+	"extensions": [
+		"ms-azuretools.vscode-docker",
+		"eamodio.gitlens",
+		"quicktype.quicktype",
+		"dotjoshjohnson.xml",
+		"hookyqr.beautify",
+		"dbaeumer.vscode-eslint",
+		"ms-dotnettools.csharp",
+		"k--kato.docomment",
+		"gruntfuggly.todo-tree",
+	],
+	"forwardPorts": [
+		1433,
+		4200,
+		5001,
+		5341
+	],
+	"name": "DockerTest"
 }
